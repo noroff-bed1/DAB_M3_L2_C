@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+    <h2 class="text-center text-primary"><i><%=user.FirstName%> <%=user.LastName%></i></h2>
+    <h3 class="p-3">My reservations:</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Hotel name</th>
+          <th scope="col">Hotel location</th>
+          <th scope="col">Room capacity</th>
+          <th scope="col">Price per day</th>
+          <th scope="col">Rent from:</th>
+          <th scope="col">Rent to:</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% user.Rooms.forEach(function(room){ %>
+              <tr>
+                  <td><%=room.Hotel.Name%></td>
+                  <td><%=room.Hotel.Location%></td>
+                  <td><%=room.Capacity%></td>
+                  <td><%=room.PricePerDay%></td>
+                  <td><%=new Date(room.Reservation.StartDate).toLocaleDateString()%></td>
+                  <td><%=new Date(room.Reservation.EndDate).toLocaleDateString()%></td>
+              </tr>
+          <% });%>
+      </tbody>
+    </table>
+  </body>
+</html>

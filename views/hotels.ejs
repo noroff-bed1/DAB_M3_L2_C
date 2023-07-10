@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link href="/stylesheets/hotels.css" rel="stylesheet">
+</head>
+
+<body>
+	<h2 class="p-3">Choose a hotel</h2>
+	<div class="list-group">
+		<% hotels.forEach(function(hotel) { %>
+			<div class="row px-3 py-1 w-100">
+				<span class="col py-1 bg-info">
+					<%=hotel.Name%><span class="right">
+							<%=hotel.Location%>
+						</span>
+				</span>
+				<a href="/rooms/<%=hotel.id%>" class="col btn btn-secondary"> Rent a room</a>
+				<a href="/hotels/<%=hotel.id%>" class="col btn btn-secondary"> Details</a>
+				<button onclick="deleteHotel('/hotels/<%=hotel.id%>')" class="col btn btn-secondary">Delete</button>
+			</div>
+			<% }); %>
+	</div>
+	<button onclick="addHotel('/hotels')" class="btn btn-success">Add a new hotel</button>
+
+	<script src="../javascript/addHotel.js"></script>
+	<script src="../javascript/deleteHotel.js"></script>
+</body>
+
+</html>
